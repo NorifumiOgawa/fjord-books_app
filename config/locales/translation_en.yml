@@ -1,7 +1,7 @@
 en:
   activerecord:
     models:
-      book: Book
+      book: BookA
     attributes:
       book:
         memo: Memo
@@ -9,8 +9,8 @@ en:
         author: Author
         picture: Image
   label:
-    edit_book: Edit Book
-    new_book: Add Book
+    edit: "Edit %{model}"
+    new: "Add %{model}"
   link:
     new: Add
     show: Show
@@ -24,6 +24,6 @@ en:
     confirm: Are you sure?
   notice:
     book:
-      create: Book was successfully created.
-      update: Book was successfully updated.
-      destroy: Book was successfully destroyed.
+      create: "%{model} was successfully created."
+      update: "%{model} was successfully updated."
+      destroy: "%{model} was successfully destroyed."

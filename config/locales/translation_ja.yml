@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      book: 書籍
+      book: 書籍S
     attributes:
       book:
         memo: メモ
@@ -9,8 +9,8 @@ ja:
         author: 著者
         picture: 画像
   label:
-    edit_book: 書籍編集
-    new_book: 書籍追加
+    edit: "%{model} 編集"
+    new: "%{model} 追加"
   link:
     new: 追加
     show: 表示
@@ -24,6 +24,6 @@ ja:
     confirm: よろしいですか？
   notice:
     book:
-      create: 書籍を登録しました
-      update: 書籍を編集しました
-      destroy: 書籍を削除しました
+      create: "%{model}を登録しました"
+      update: "%{model}を編集しました"
+      destroy: "%{model}を削除しました"
