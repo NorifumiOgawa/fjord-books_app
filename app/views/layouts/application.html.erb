@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <div>
+      <%= link_to '日本語', "#{request.path_info}?locale=ja" %>
+      <%= link_to 'English', "#{request.path_info}?locale=en" %>
+    </div>
     <%= yield %>
   </body>
 </html>

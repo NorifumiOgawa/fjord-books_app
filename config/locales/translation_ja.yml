@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    models:
+      book: 書籍S
+    attributes:
+      book:
+        memo: メモ
+        title: タイトル
+        author: 著者
+        picture: 画像
+  label:
+    edit: "%{model} 編集"
+    new: "%{model} 追加"
+  link:
+    new: 追加
+    show: 表示
+    edit: 編集
+    destroy: 削除
+    back: 前画面
+  button:
+    create: 新規登録実行
+    update: 更新実行
+  message:
+    confirm: よろしいですか？
+  notice:
+    book:
+      create: "%{model}を登録しました"
+      update: "%{model}を編集しました"
+      destroy: "%{model}を削除しました"

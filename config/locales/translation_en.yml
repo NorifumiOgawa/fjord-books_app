@@ -1,0 +1,29 @@
+en:
+  activerecord:
+    models:
+      book: BookA
+    attributes:
+      book:
+        memo: Memo
+        title: Title
+        author: Author
+        picture: Image
+  label:
+    edit: "Edit %{model}"
+    new: "Add %{model}"
+  link:
+    new: Add
+    show: Show
+    edit: Edit
+    destroy: Remove
+    back: Back
+  button:
+    create: Save
+    update: Update
+  message:
+    confirm: Are you sure?
+  notice:
+    book:
+      create: "%{model} was successfully created."
+      update: "%{model} was successfully updated."
+      destroy: "%{model} was successfully destroyed."
