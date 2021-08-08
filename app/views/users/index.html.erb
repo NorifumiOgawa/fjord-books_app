@@ -1,0 +1,23 @@
+<h1><%= User.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.human_attribute_name(:id) %></th>
+      <th><%= User.human_attribute_name(:email) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id, user_path(user.id) %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>
+
+<br>
