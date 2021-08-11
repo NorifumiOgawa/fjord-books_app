@@ -41,7 +41,7 @@ group :development do
   gem 'letter_opener_web'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop-fjord', require: false
+  gem 'rubocop-fjord', git: 'https://github.com/fjordllc/rubocop-fjord', branch: 'master'
   gem 'rubocop-rails', require: false
   gem 'spring'
   gem 'web-console', '>= 4.1.0'
@@ -62,3 +62,4 @@ gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'mini_magick', '~> 4.11'
