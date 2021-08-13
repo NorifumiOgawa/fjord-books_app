@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        zipcode: 郵便番号
+        address: 住所
+        profile: プロフィール
+  devise:
+    shared:
+      links:
+        edit_account: アカウント編集
+        sign_out: ログアウト
+      welcome_html: こんにちは、<strong>%{email}</strong>様。
