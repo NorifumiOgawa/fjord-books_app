@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/' => redirect('/books')
+  root to: 'books#index'
   devise_for :users, :controllers => {
     :registrations => "users/registrations"
   }
