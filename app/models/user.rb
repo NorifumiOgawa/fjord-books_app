@@ -13,7 +13,22 @@ class User < ApplicationRecord
            class_name: 'Relationship',
            foreign_key: 'followed_id',
            dependent: :destroy,
-           inverse_of: :followee
+           inverse_of: :followed
+  has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :followings, through: :active_relationships, source: :followee
+
+  # ユーザーをフォローする
+  def follow(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # ユーザーをアンフォローする
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # フォローしているか確認する
+  def following?(other_user)
+    followings.include?(other_user)
+  end
 end
