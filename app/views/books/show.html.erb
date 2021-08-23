@@ -20,5 +20,10 @@
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
 
+<h3>Comments</h3>
+<% @book.comments.each do |comment| %>
+  <p><%= comment.user.email %>: <%= comment.body %></p>
+<% end %>
+
 <%= link_to t('views.common.edit'), edit_book_path(@book) %> |
 <%= link_to t('views.common.back'), books_path %>
