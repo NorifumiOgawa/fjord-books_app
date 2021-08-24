@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def show; end
 
   def followers
-    @followers = @user.followers.with_attached_avatar.page(params[:page])
+    @followers = @user.followers.with_attached_avatar.order(:email).page(params[:page])
   end
 
   def followings
-    @followings = @user.followings.with_attached_avatar.page(params[:page])
+    @followings = @user.followings.with_attached_avatar.order(:email).page(params[:page])
   end
 
   private
