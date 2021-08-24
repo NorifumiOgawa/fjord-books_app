@@ -216,8 +216,10 @@ ja:
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
       title_show: "%{name}の詳細"
+      user_title_list: "%{user}の%{title}一覧"
       sign_out: ログアウト
       minimum_length: "%{length}文字以上"
+      number_of: "%{name}数"
     pagination:
       first: '最初'
       last: '最後'

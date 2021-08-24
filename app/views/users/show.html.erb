@@ -11,12 +11,12 @@
 </p>
 
 <p>
-  <strong><%= "#{Relationship.human_attribute_name(:followers)}数" %>:</strong>
+  <strong><%= t('views.common.number_of', name: Relationship.human_attribute_name(:followers)) %>:</strong>
   <%= link_to "#{@user.followers.count}人", followers_user_path %>
 </p>
 
 <p>
-  <strong><%= "#{Relationship.human_attribute_name(:followings)}数" %>:</strong>
+  <strong><%= t('views.common.number_of', name: Relationship.human_attribute_name(:followings)) %>:</strong>
   <%= link_to "#{@user.followings.count}人", followings_user_path %>
 </p>
 
@@ -28,9 +28,11 @@
       <% end %>
     <% else %>
       <%= form_with model: current_user.active_relationships.build do |f| %>
-        <div><%= hidden_field_tag :user_id, @user.id %></div>
-          <%= f.submit "フォローする", class: "btn btn-primary" %>
-        <% end %>
+        <div>
+          <%= hidden_field_tag :user_id, @user.id %>
+        </div>
+        <%= f.submit "フォローする", class: "btn btn-primary" %>
+      <% end %>
     <% end %>
   </div>
 <% end %>

@@ -1,2 +1,2 @@
-<h1><%= "#{@user.name !='' ? @user.name : @user.email}の#{Relationship.human_attribute_name(:followings)}一覧" %></h1>
+<h1><%= t('views.common.user_title_list', user: @user.name_or_email, title: Relationship.human_attribute_name(:followings)) %></h1>
 <%= render 'users', users: @followings %>

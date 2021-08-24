@@ -28,4 +28,8 @@ class User < ApplicationRecord
   def following?(other_user)
     active_relationships.exists?(followed_id: other_user.id)
   end
+
+  def name_or_email
+    name.presence || email
+  end
 end
