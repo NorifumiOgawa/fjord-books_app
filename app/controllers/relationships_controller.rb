@@ -3,8 +3,11 @@
 class RelationshipsController < ApplicationController
   def create
     @other_user = User.find(params[:user_id])
-    current_user.follow(@other_user)
-    redirect_to user_path(@other_user)
+    if current_user.follow(@other_user)
+      redirect_to user_path(@other_user)
+    else
+      redirect_to user_path(@other_user), alert: t('errors.template.header.one', model: Relationship.model_name.human)
+    end
   end
 
   def destroy
