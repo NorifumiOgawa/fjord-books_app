@@ -29,6 +29,6 @@ class User < ApplicationRecord
 
   # フォローしているか確認する
   def following?(other_user)
-    followings.include?(other_user)
+    active_relationships.exists?(followed_id: other_user.id)
   end
 end
