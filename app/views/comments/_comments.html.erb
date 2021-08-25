@@ -1,8 +1,8 @@
-<h3>Comments</h3>
+<h3><%= Comment.model_name.human %></h3>
 <% if commentable.comments.size.positive? %>
   <% commentable.comments.each do |comment| %>
     <p><%= l comment.created_at, format: :short %>) <%= comment.user.name? ? comment.user.name : comment.user.email %>: <%= comment.body %></p>
   <% end %>
 <% else %>
-  <p>コメントは有りません。</p>
+  <p><%= t('views.common.no_data', model: Comment.model_name.human) %></p>
 <% end %>
