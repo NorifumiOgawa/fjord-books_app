@@ -3,8 +3,8 @@
 class RelationshipsController < ApplicationController
   def create
     @other_user = User.find(params[:user_id])
-    result = current_user.follow(@other_user)
-    if result
+    follow_obj = current_user.follow(@other_user)
+    if follow_obj.save
       redirect_to user_path(@other_user)
     else
       redirect_to user_path(@other_user), alert: t('errors.template.header.one', model: Relationship.model_name.human)
@@ -12,12 +12,8 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    @other_user = Relationship.find_by(id: params[:id], follower_id: current_user.id).followed
-    result = current_user.unfollow(@other_user)
-    if result
-      redirect_to user_path(@other_user)
-    else
-      redirect_to user_path(@other_user), alert: t('errors.template.header.one', model: Relationship.model_name.human)
-    end
+    @other_user = current_user.active_relationships.find(params[:id]).followed
+    current_user.unfollow(@other_user)
+    redirect_to user_path(@other_user)
   end
 end
