@@ -17,7 +17,7 @@
 
 <p>
   <strong><%= Report.human_attribute_name(:created_at) %>:</strong>
-  <%= @report.created_at %>
+  <%= l @report.created_at %>
 </p>
 
 <%= render partial: "comments/comments", locals: {commentable: @report} %>
