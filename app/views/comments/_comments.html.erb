@@ -1,7 +1,7 @@
 <h3>Comments</h3>
 <% if commentable.comments.size.positive? %>
   <% commentable.comments.each do |comment| %>
-    <p><%= comment.user.name? ? comment.user.name : comment.user.email %>: <%= comment.body %></p>
+    <p><%= l comment.created_at, format: :short %>) <%= comment.user.name? ? comment.user.name : comment.user.email %>: <%= comment.body %></p>
   <% end %>
 <% else %>
   <p>コメントは有りません。</p>
