@@ -3,8 +3,7 @@
 class RelationshipsController < ApplicationController
   def create
     @other_user = User.find(params[:user_id])
-    follow_obj = current_user.follow(@other_user)
-    if follow_obj.save
+    if current_user.follow(@other_user)
       redirect_to user_path(@other_user)
     else
       redirect_to user_path(@other_user), alert: t('errors.template.header.one', model: Relationship.model_name.human)
