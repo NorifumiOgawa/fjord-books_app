@@ -11,6 +11,33 @@
 </p>
 
 <p>
+  <strong><%= t('views.common.number_of', name: Relationship.human_attribute_name(:followers)) %>:</strong>
+  <%= link_to "#{@user.followers.count}人", followers_user_path %>
+</p>
+
+<p>
+  <strong><%= t('views.common.number_of', name: Relationship.human_attribute_name(:followings)) %>:</strong>
+  <%= link_to "#{@user.followings.count}人", followings_user_path %>
+</p>
+
+<% unless @user == current_user %>
+  <div id="follow_form">
+    <% if current_user.following?(@user) %>
+      <%= form_with model: current_user.active_relationships.find_by(followed_id: @user.id), html: { method: :delete } do |f| %>
+        <%= f.submit "フォロー解除する", class: "btn" %>
+      <% end %>
+    <% else %>
+      <%= form_with model: current_user.active_relationships.build do |f| %>
+        <div>
+          <%= hidden_field_tag :user_id, @user.id %>
+        </div>
+        <%= f.submit "フォローする", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+
+<p>
   <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
   <%= @user.postal_code %>
 </p>

@@ -1,0 +1,2 @@
+<h1><%= t('views.common.user_title_list', user: @user.name_or_email, title: Relationship.human_attribute_name(:followers)) %></h1>
+<%= render 'users', users: @followers %>
