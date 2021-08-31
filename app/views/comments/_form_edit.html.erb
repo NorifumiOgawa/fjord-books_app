@@ -1,4 +1,16 @@
 <%= form_with(model: comment, local: true) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('errors.template.header.other', model: Comment.model_name.human, count: comment.errors.count) %></h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= form.text_area :body, class: "form-control", placeholder: Comment.model_name.human, rows: 2, required: true %>
   </div>

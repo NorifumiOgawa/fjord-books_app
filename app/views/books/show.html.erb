@@ -19,7 +19,6 @@
   <strong><%= Book.human_attribute_name(:picture) %>:</strong>
   <%= image_tag(@book.picture_url) if @book.picture.present? %>
 </p>
-
 <%= render partial: "comments/comments", locals: {commentable: @book} %>
 <%= render partial: "comments/form", locals: {commentable: @book, comment: @comment} %>
 

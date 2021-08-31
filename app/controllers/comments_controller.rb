@@ -7,13 +7,16 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
-    redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    if @comment.save
+      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+    else
+      @book = @commentable
+      render template: "#{@comment.imageable_type.downcase}s/show"
+      # redirect_to @commentable
+    end
   end
 
-  def edit
-    @commentable = @comment.imageable
-  end
+  def edit; end
 
   def update
     if @comment.update(comment_params)

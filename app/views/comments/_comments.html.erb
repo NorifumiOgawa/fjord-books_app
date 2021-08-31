@@ -1,12 +1,12 @@
 <h3><%= Comment.model_name.human %></h3>
 <% if commentable.comments.size.positive? %>
   <% commentable.comments.each do |comment| %>
+    <% next unless comment.id %>
     <p><%= l comment.created_at, format: :short %>) <%= comment.user.name? ? comment.user.name : comment.user.email %>: <%= comment.body %>
       <% if comment.user == current_user %>
       | <%= link_to t('views.common.edit'), edit_comment_path(comment) %> | <%= link_to t('views.common.destroy'), comment, method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
       <% end %>
     </p>
-    <p><%= comment.imageable.inspect %></p>
   <% end %>
 <% else %>
   <p><%= t('views.common.no_data', model: Comment.model_name.human) %></p>
