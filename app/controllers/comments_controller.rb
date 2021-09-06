@@ -32,7 +32,8 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find_by(id: params[:id], user_id: current_user.id)
+    redirect_to root_path unless @comment
   end
 
   def comment_params
