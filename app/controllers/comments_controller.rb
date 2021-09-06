@@ -2,7 +2,6 @@
 
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
-  before_action :authenticate_user!
 
   def create
     @comment = @commentable.comments.new(comment_params)
