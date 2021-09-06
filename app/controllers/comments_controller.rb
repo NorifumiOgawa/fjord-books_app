@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
     else
       @book = @commentable
       render template: "#{@comment.imageable_type.downcase}s/show"
-      # redirect_to @commentable
     end
   end
 
