@@ -42,13 +42,10 @@ class ReportsController < ApplicationController
     end
   end
 
-  # DELETE /reports/1 or /reports/1.json
+  # DELETE /reports/1
   def destroy
     @report.destroy
-    respond_to do |format|
-      format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
-      format.json { head :no_content }
-    end
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private
