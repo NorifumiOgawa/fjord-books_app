@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments, only: %i[create edit update destroy]
+  resources :comments, only: %i[edit update destroy]
   resources :reports do
     resources :comments, module: :reports, only: [:create]
   end

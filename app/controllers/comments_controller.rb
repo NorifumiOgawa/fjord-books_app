@@ -3,17 +3,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit update destroy]
 
-  def create
-    @comment = @commentable.comments.new(comment_params)
-    @comment.user = current_user
-    if @comment.save
-      redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
-    else
-      @book = @commentable
-      render template: "#{@comment.commentable_type.downcase}s/show"
-    end
-  end
-
   def edit; end
 
   def update

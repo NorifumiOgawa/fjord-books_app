@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.text_area :body, class: "form-control", placeholder: Comment.model_name.human, rows: 2 %>
+    <%= form.text_area :body, class: "form-control", placeholder: Comment.model_name.human, rows: 2, required: true %>
   </div>
   <%= form.submit class: "btn btn-primary" %>
 <% end %>
