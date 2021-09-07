@@ -2,7 +2,7 @@
 
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :imageable, polymorphic: true
+  belongs_to :commentable, polymorphic: true
 
   validates :body, presence: true
 end

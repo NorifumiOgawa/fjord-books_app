@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       redirect_to @commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
       @book = @commentable
-      render template: "#{@comment.imageable_type.downcase}s/show"
+      render template: "#{@comment.commentable_type.downcase}s/show"
     end
   end
 
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to @comment.imageable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
+      redirect_to @comment.commentable, notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
       render :edit
     end
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @comment.imageable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    redirect_to @comment.commentable, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
