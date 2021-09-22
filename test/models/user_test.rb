@@ -3,26 +3,28 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test 'ユーザ名もしくはメールアドレスを返す' do
-    user = User.new(email: 'foo@example.com', name: '')
-    assert_equal 'foo@example.com', user.name_or_email
-
-    user.name = 'Foo Bar'
-    assert_equal 'Foo Bar', user.name_or_email
+  setup do
+    @user_alice = users(:alice)
+    @user_bob = users(:bob)
   end
 
-  test 'フォロー機能' do
-    me = User.create!(email: 'me@example.com', password: 'password')
-    she = User.create!(email: 'she@example.com', password: 'password')
-    assert_not me.following?(she)
-    assert_not she.followed_by?(me)
+  test 'ユーザ名もしくはメールアドレスを返す' do
+    assert_equal 'alice@example.com', @user_alice.name_or_email
 
-    me.follow(she)
-    assert me.following?(she)
-    assert she.followed_by?(me)
+    @user_alice.name = 'Alice Cooper'
+    assert_equal 'Alice Cooper', @user_alice.name_or_email
+  end
 
-    me.unfollow(she)
-    assert_not me.following?(she)
-    assert_not she.followed_by?(me)
+  test 'フォロー関連メソッド' do
+    assert_not @user_alice.following?(@user_bob)
+    assert_not @user_bob.followed_by?(@user_alice)
+
+    @user_alice.follow(@user_bob)
+    assert @user_alice.following?(@user_bob)
+    assert @user_bob.followed_by?(@user_alice)
+
+    @user_alice.unfollow(@user_bob)
+    assert_not @user_alice.following?(@user_bob)
+    assert_not @user_bob.followed_by?(@user_alice)
   end
 end
