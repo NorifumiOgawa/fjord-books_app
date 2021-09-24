@@ -4,8 +4,8 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   setup do
-    @user_alice = users(:alice)
-    @user_bob = users(:bob)
+    @user_alice = create(:alice)
+    @user_bob = create(:bob)
   end
 
   test 'ユーザ名もしくはメールアドレスを返す' do

@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-war_games:
-  title: ウォーゲーム
-  memo: 三目並べ
-  author: ジョン・バダム
+# war_games:
+#   title: ウォーゲーム
+#   memo: 三目並べ
+#   author: ジョン・バダム
 
 # two:
 #   title: MyString

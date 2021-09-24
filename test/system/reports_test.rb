@@ -4,7 +4,7 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:one)
+    @report = create(:bobs_report)
 
     visit root_url
     fill_in 'Eメール', with: 'bob@example.com'
@@ -16,7 +16,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     assert_selector 'h1', text: '日報'
     assert_text 'bob'
-    assert_text 'カレーを作った'
+    assert_text 'ボブのカレー日記'
   end
 
   test '日報の新規登録' do
