@@ -17,20 +17,4 @@ class ReportTest < ActiveSupport::TestCase
   test '作成日を日付型に変換' do
     assert @report.created_on.instance_of?(Date)
   end
-
-  test 'titleとcontentが有れば有効' do
-    assert @report.valid?
-  end
-
-  test 'titleは必須' do
-    @report.title = nil
-    assert @report.invalid?
-    assert_includes @report.errors[:title], 'を入力してください'
-  end
-
-  test 'contentは必須' do
-    @report.content = nil
-    assert @report.invalid?
-    assert_includes @report.errors[:content], 'を入力してください'
-  end
 end
