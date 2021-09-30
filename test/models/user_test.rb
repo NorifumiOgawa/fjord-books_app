@@ -15,16 +15,28 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Alice Cooper', @user_alice.name_or_email
   end
 
-  test 'フォロー関連メソッド' do
+  test 'following? / フォローしているか否かを返す' do
     assert_not @user_alice.following?(@user_bob)
-    assert_not @user_bob.followed_by?(@user_alice)
-
-    @user_alice.follow(@user_bob)
+    Relationship.create!(following_id: @user_bob.id, follower_id: @user_alice.id)
     assert @user_alice.following?(@user_bob)
-    assert @user_bob.followed_by?(@user_alice)
+  end
 
+  test 'followed_by? / フォローされているか否かを返す' do
+    assert_not @user_alice.followed_by?(@user_bob)
+    Relationship.create!(following_id: @user_alice.id, follower_id: @user_bob.id)
+    assert @user_alice.followed_by?(@user_bob)
+  end
+
+  test 'follow / フォローする' do
+    assert_not Relationship.where(following_id: @user_bob.id, follower_id: @user_alice.id).exists?
+    @user_alice.follow(@user_bob)
+    assert Relationship.where(following_id: @user_bob.id, follower_id: @user_alice.id).exists?
+  end
+
+  test 'unfollow / アンフォローする' do
+    Relationship.create!(following_id: @user_bob.id, follower_id: @user_alice.id)
+    assert Relationship.where(following_id: @user_bob.id, follower_id: @user_alice.id).exists?
     @user_alice.unfollow(@user_bob)
-    assert_not @user_alice.following?(@user_bob)
-    assert_not @user_bob.followed_by?(@user_alice)
+    assert_not Relationship.where(following_id: @user_bob.id, follower_id: @user_alice.id).exists?
   end
 end
