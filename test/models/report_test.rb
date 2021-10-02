@@ -16,6 +16,7 @@ class ReportTest < ActiveSupport::TestCase
 
   test '作成日を日付型に変換' do
     assert @report.created_on.instance_of?(Date)
-    assert_equal @report.created_at.strftime('%a, %d %b %Y'), @report.created_on.strftime('%a, %d %b %Y')
+    @report.created_at = Time.zone.local(2021, 10, 2, 11, 0, 0, 0)
+    assert_equal Date.new(2021, 10, 2), @report.created_on
   end
 end
